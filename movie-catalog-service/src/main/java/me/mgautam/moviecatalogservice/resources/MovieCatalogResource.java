@@ -23,14 +23,15 @@ public class MovieCatalogResource {
 
         RestTemplate restTemplate = new RestTemplate();
 
-        restTemplate.getForEntity("http://localhost:8083/movies/foo", Movie.class);
-
         List<Rating> ratings = Arrays.asList(
             new Rating("1234", 4),
             new Rating("5678", 3)
         );
 
-        return ratings.stream().map(rating -> new CatalogItem("Titanic", "some titanic desc", 4))
+        return ratings.stream().map(rating -> {
+            Movie movie = restTemplate.getForObject("http://localhost:8083/movies/" + rating.getMovieId(), Movie.class);
+            return new CatalogItem(movie.getName(), "some titanic desc", rating.getRating());
+        })
                 .collect(Collectors.toList());
     }
     
