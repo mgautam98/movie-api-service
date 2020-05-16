@@ -1,6 +1,5 @@
 package me.mgautam.moviecatalogservice.resources;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,7 +11,6 @@ import org.springframework.web.client.RestTemplate;
 
 import me.mgautam.moviecatalogservice.models.CatalogItem;
 import me.mgautam.moviecatalogservice.models.Movie;
-import me.mgautam.moviecatalogservice.models.Rating;
 import me.mgautam.moviecatalogservice.models.UserRating;
 
 @RestController
